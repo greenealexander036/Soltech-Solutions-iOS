@@ -1,0 +1,6 @@
+framework module Pods_Soltech_Solutions {
+  umbrella header "Pods-Soltech-Solutions-umbrella.h"
+
+  export *
+  module * { export * }
+}

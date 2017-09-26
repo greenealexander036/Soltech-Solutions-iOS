@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let frontVC = UINavigationController(rootViewController: HomeVC())
+        let backVC = NavVC()
+        
+        let swreveal = SWRevealViewController(rearViewController: backVC, frontViewController: frontVC)
+        
+        window?.rootViewController = swreveal
+
         return true
     }
 

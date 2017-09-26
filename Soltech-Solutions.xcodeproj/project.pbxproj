@@ -7,21 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C53FC60440BD025FB98CF78 /* Pods_Soltech_Solutions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A406EE076CFF7753C3B2AA35 /* Pods_Soltech_Solutions.framework */; };
 		CC9B84241F78A062009BB17A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9B84231F78A062009BB17A /* AppDelegate.swift */; };
-		CC9B84261F78A062009BB17A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9B84251F78A062009BB17A /* ViewController.swift */; };
-		CC9B84291F78A062009BB17A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9B84271F78A062009BB17A /* Main.storyboard */; };
-		CC9B842B1F78A062009BB17A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC9B842A1F78A062009BB17A /* Assets.xcassets */; };
+		CC9B84261F78A062009BB17A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9B84251F78A062009BB17A /* HomeVC.swift */; };
 		CC9B842E1F78A062009BB17A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9B842C1F78A062009BB17A /* LaunchScreen.storyboard */; };
+		CCA0AFBF1F78A7E1005E63F6 /* HomeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFBE1F78A7E1005E63F6 /* HomeOption.swift */; };
+		CCA0AFC11F78A802005E63F6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFC01F78A802005E63F6 /* HomeCell.swift */; };
+		CCA0AFD71F78CEFE005E63F6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFD61F78CEFD005E63F6 /* SWRevealViewController.m */; };
+		CCA0AFD91F78D05D005E63F6 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFD81F78D05D005E63F6 /* NavVC.swift */; };
+		CCA0AFDB1F78D9AF005E63F6 /* PlantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFDA1F78D9AF005E63F6 /* PlantsVC.swift */; };
+		CCA0AFDD1F78D9D1005E63F6 /* ConnectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFDC1F78D9D1005E63F6 /* ConnectVC.swift */; };
+		CCA0AFDF1F78D9E1005E63F6 /* OnOffVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFDE1F78D9E1005E63F6 /* OnOffVC.swift */; };
+		CCA0AFE11F78D9F3005E63F6 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFE01F78D9F3005E63F6 /* AboutVC.swift */; };
+		CCA0AFE31F78DA02005E63F6 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AFE21F78DA02005E63F6 /* ContactVC.swift */; };
+		CCD9226F1F798C2D00762F8A /* PlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9226E1F798C2D00762F8A /* PlantCell.swift */; };
+		CCD922711F798C4900762F8A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD922701F798C4900762F8A /* Plant.swift */; };
+		CCD922731F798DE100762F8A /* PlantFamiliesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD922721F798DE100762F8A /* PlantFamiliesVC.swift */; };
+		CCE141A61F79C8570017642E /* PlantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE141A51F79C8570017642E /* PlantVC.swift */; };
+		CCE141A81F79CF1B0017642E /* NavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE141A71F79CF1B0017642E /* NavCell.swift */; };
+		CCE141AA1F79D1ED0017642E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA0AFC41F78C80F005E63F6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		315BC03B553C3D751FF15DC3 /* Pods-Soltech-Solutions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soltech-Solutions.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soltech-Solutions/Pods-Soltech-Solutions.debug.xcconfig"; sourceTree = "<group>"; };
+		A406EE076CFF7753C3B2AA35 /* Pods_Soltech_Solutions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soltech_Solutions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC12A93AF27EBE93AE6195F1 /* Pods-Soltech-Solutions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soltech-Solutions.release.xcconfig"; path = "Pods/Target Support Files/Pods-Soltech-Solutions/Pods-Soltech-Solutions.release.xcconfig"; sourceTree = "<group>"; };
 		CC9B84201F78A062009BB17A /* Soltech-Solutions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Soltech-Solutions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9B84231F78A062009BB17A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC9B84251F78A062009BB17A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CC9B84281F78A062009BB17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CC9B842A1F78A062009BB17A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC9B84251F78A062009BB17A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CC9B842D1F78A062009BB17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC9B842F1F78A062009BB17A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA0AFBE1F78A7E1005E63F6 /* HomeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOption.swift; sourceTree = "<group>"; };
+		CCA0AFC01F78A802005E63F6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		CCA0AFC41F78C80F005E63F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CCA0AFD41F78CEAD005E63F6 /* Soltech-Solutions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soltech-Solutions-Bridging-Header.h"; sourceTree = "<group>"; };
+		CCA0AFD51F78CEFD005E63F6 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		CCA0AFD61F78CEFD005E63F6 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		CCA0AFD81F78D05D005E63F6 /* NavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
+		CCA0AFDA1F78D9AF005E63F6 /* PlantsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsVC.swift; sourceTree = "<group>"; };
+		CCA0AFDC1F78D9D1005E63F6 /* ConnectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectVC.swift; sourceTree = "<group>"; };
+		CCA0AFDE1F78D9E1005E63F6 /* OnOffVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffVC.swift; sourceTree = "<group>"; };
+		CCA0AFE01F78D9F3005E63F6 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		CCA0AFE21F78DA02005E63F6 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
+		CCD9226E1F798C2D00762F8A /* PlantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCell.swift; sourceTree = "<group>"; };
+		CCD922701F798C4900762F8A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		CCD922721F798DE100762F8A /* PlantFamiliesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFamiliesVC.swift; sourceTree = "<group>"; };
+		CCE141A51F79C8570017642E /* PlantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantVC.swift; sourceTree = "<group>"; };
+		CCE141A71F79CF1B0017642E /* NavCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C53FC60440BD025FB98CF78 /* Pods_Soltech_Solutions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +73,8 @@
 			children = (
 				CC9B84221F78A062009BB17A /* Soltech-Solutions */,
 				CC9B84211F78A062009BB17A /* Products */,
+				F142EE81516EBC5971A685BB /* Pods */,
+				CF06D98CEDF1D6A5DA31A31E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +90,77 @@
 			isa = PBXGroup;
 			children = (
 				CC9B84231F78A062009BB17A /* AppDelegate.swift */,
-				CC9B84251F78A062009BB17A /* ViewController.swift */,
-				CC9B84271F78A062009BB17A /* Main.storyboard */,
-				CC9B842A1F78A062009BB17A /* Assets.xcassets */,
+				CCA0AFBD1F78A7CE005E63F6 /* Model */,
+				CCA0AFBC1F78A7C8005E63F6 /* View */,
+				CCA0AFBB1F78A7C2005E63F6 /* Controller */,
 				CC9B842C1F78A062009BB17A /* LaunchScreen.storyboard */,
+				CCA0AFC41F78C80F005E63F6 /* Assets.xcassets */,
 				CC9B842F1F78A062009BB17A /* Info.plist */,
+				CCA0AFD41F78CEAD005E63F6 /* Soltech-Solutions-Bridging-Header.h */,
+				CCA0AFD51F78CEFD005E63F6 /* SWRevealViewController.h */,
+				CCA0AFD61F78CEFD005E63F6 /* SWRevealViewController.m */,
 			);
 			path = "Soltech-Solutions";
+			sourceTree = "<group>";
+		};
+		CCA0AFBB1F78A7C2005E63F6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC9B84251F78A062009BB17A /* HomeVC.swift */,
+				CCA0AFD81F78D05D005E63F6 /* NavVC.swift */,
+				CCE141A91F79CF3F0017642E /* Plants */,
+				CCA0AFE21F78DA02005E63F6 /* ContactVC.swift */,
+				CCA0AFE01F78D9F3005E63F6 /* AboutVC.swift */,
+				CCA0AFDE1F78D9E1005E63F6 /* OnOffVC.swift */,
+				CCA0AFDC1F78D9D1005E63F6 /* ConnectVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CCA0AFBC1F78A7C8005E63F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0AFC01F78A802005E63F6 /* HomeCell.swift */,
+				CCD9226E1F798C2D00762F8A /* PlantCell.swift */,
+				CCE141A71F79CF1B0017642E /* NavCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCA0AFBD1F78A7CE005E63F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0AFBE1F78A7E1005E63F6 /* HomeOption.swift */,
+				CCD922701F798C4900762F8A /* Plant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCE141A91F79CF3F0017642E /* Plants */ = {
+			isa = PBXGroup;
+			children = (
+				CCD922721F798DE100762F8A /* PlantFamiliesVC.swift */,
+				CCA0AFDA1F78D9AF005E63F6 /* PlantsVC.swift */,
+				CCE141A51F79C8570017642E /* PlantVC.swift */,
+			);
+			path = Plants;
+			sourceTree = "<group>";
+		};
+		CF06D98CEDF1D6A5DA31A31E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A406EE076CFF7753C3B2AA35 /* Pods_Soltech_Solutions.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F142EE81516EBC5971A685BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				315BC03B553C3D751FF15DC3 /* Pods-Soltech-Solutions.debug.xcconfig */,
+				AC12A93AF27EBE93AE6195F1 /* Pods-Soltech-Solutions.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC9B84321F78A062009BB17A /* Build configuration list for PBXNativeTarget "Soltech-Solutions" */;
 			buildPhases = (
+				2A1BE736407B1094F1150320 /* [CP] Check Pods Manifest.lock */,
 				CC9B841C1F78A062009BB17A /* Sources */,
 				CC9B841D1F78A062009BB17A /* Frameworks */,
 				CC9B841E1F78A062009BB17A /* Resources */,
+				68653CC2A4FC755E555FF4F8 /* [CP] Embed Pods Frameworks */,
+				5BEE20BE02E5F6B7120FB4A9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +198,7 @@
 				TargetAttributes = {
 					CC9B841F1F78A062009BB17A = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,35 +226,94 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE141AA1F79D1ED0017642E /* Assets.xcassets in Resources */,
 				CC9B842E1F78A062009BB17A /* LaunchScreen.storyboard in Resources */,
-				CC9B842B1F78A062009BB17A /* Assets.xcassets in Resources */,
-				CC9B84291F78A062009BB17A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A1BE736407B1094F1150320 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Soltech-Solutions-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BEE20BE02E5F6B7120FB4A9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Soltech-Solutions/Pods-Soltech-Solutions-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68653CC2A4FC755E555FF4F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Soltech-Solutions/Pods-Soltech-Solutions-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Soltech-Solutions/Pods-Soltech-Solutions-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC9B841C1F78A062009BB17A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9B84261F78A062009BB17A /* ViewController.swift in Sources */,
+				CCA0AFD91F78D05D005E63F6 /* NavVC.swift in Sources */,
+				CCA0AFBF1F78A7E1005E63F6 /* HomeOption.swift in Sources */,
+				CCA0AFE31F78DA02005E63F6 /* ContactVC.swift in Sources */,
+				CCA0AFDF1F78D9E1005E63F6 /* OnOffVC.swift in Sources */,
+				CC9B84261F78A062009BB17A /* HomeVC.swift in Sources */,
+				CCA0AFD71F78CEFE005E63F6 /* SWRevealViewController.m in Sources */,
+				CCD922731F798DE100762F8A /* PlantFamiliesVC.swift in Sources */,
+				CCD922711F798C4900762F8A /* Plant.swift in Sources */,
+				CCA0AFDB1F78D9AF005E63F6 /* PlantsVC.swift in Sources */,
+				CCA0AFE11F78D9F3005E63F6 /* AboutVC.swift in Sources */,
+				CCA0AFDD1F78D9D1005E63F6 /* ConnectVC.swift in Sources */,
+				CCD9226F1F798C2D00762F8A /* PlantCell.swift in Sources */,
+				CCA0AFC11F78A802005E63F6 /* HomeCell.swift in Sources */,
+				CCE141A81F79CF1B0017642E /* NavCell.swift in Sources */,
 				CC9B84241F78A062009BB17A /* AppDelegate.swift in Sources */,
+				CCE141A61F79C8570017642E /* PlantVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CC9B84271F78A062009BB17A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC9B84281F78A062009BB17A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CC9B842C1F78A062009BB17A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -272,31 +434,38 @@
 		};
 		CC9B84331F78A062009BB17A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 315BC03B553C3D751FF15DC3 /* Pods-Soltech-Solutions.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9LG726DP9;
 				INFOPLIST_FILE = "Soltech-Solutions/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alexander-greene.Soltech-Solutions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soltech-Solutions/Soltech-Solutions-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CC9B84341F78A062009BB17A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC12A93AF27EBE93AE6195F1 /* Pods-Soltech-Solutions.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9LG726DP9;
 				INFOPLIST_FILE = "Soltech-Solutions/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alexander-greene.Soltech-Solutions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soltech-Solutions/Soltech-Solutions-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
