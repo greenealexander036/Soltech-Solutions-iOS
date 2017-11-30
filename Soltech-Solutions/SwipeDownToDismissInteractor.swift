@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class SwipeDownToDimissInteractor: UIPercentDrivenInteractiveTransition {
+	var hasStarted = false
+	var shouldFinish = false
+}

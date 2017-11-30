@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "544212980401A6DA7806F65EAD8C6637"
+               BlueprintIdentifier = "D9165B51D8267A4056753BC98DA3AB5D"
                BuildableName = "Cartography.framework"
                BlueprintName = "Cartography"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "544212980401A6DA7806F65EAD8C6637"
+            BlueprintIdentifier = "D9165B51D8267A4056753BC98DA3AB5D"
             BuildableName = "Cartography.framework"
             BlueprintName = "Cartography"
             ReferencedContainer = "container:Pods.xcodeproj">

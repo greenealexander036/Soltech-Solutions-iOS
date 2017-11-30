@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeOption {
+class NavOption {
     var title: String!
     var backgroundImageName: String!
     var viewControllerType: UIViewController.Type!

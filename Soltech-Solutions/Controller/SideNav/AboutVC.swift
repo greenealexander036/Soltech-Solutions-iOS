@@ -12,25 +12,46 @@ import Cartography
 import RealmSwift
 
 class AboutVC: UIViewController {
+	private var height: CGFloat = {
+		switch UIDevice.current.model {
+		case "iPad":
+		 	return 400
+		default:
+			return 284
+		}
+	}()
 
 	private lazy var headerView: StretchHeader = {
 		let options = StretchHeaderOptions()
 		options.position = .underNavigationBar
 		let header = StretchHeader()
-		header.stretchHeaderSize(headerSize: CGSize(width: view.frame.size.width, height: 220),
-		                         imageSize: CGSize(width: view.frame.size.width, height: 220),
+		header.stretchHeaderSize(headerSize: CGSize(width: view.frame.size.width, height: height),
+		                         imageSize: CGSize(width: view.frame.size.width, height: height),
 		                         controller: self,
 		                         options: options)
 		header.imageView.image = UIImage(named: "aboutImg")
+		let textLabel = UILabel(frame: CGRect(x: 0, y: height - 64, width: view.frame.width, height: 64))
+		textLabel.backgroundColor = .white
+		textLabel.font = UIFont.boldSystemFont(ofSize: 24)
+		textLabel.textColor = .black
+		textLabel.text = "Our Story"
+		textLabel.textAlignment = .center
+		header.addSubview(textLabel)
 		return header
 	}()
 
-	private let tableView: UITableView = {
-		let tableView = UITableView(frame: CGRect.zero)
+	private lazy var tableView: UITableView = {
+		let tableView = UITableView()
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 50
 		tableView.separatorStyle = .none
 		tableView.allowsSelection = false
+		tableView.tableHeaderView = headerView
+		tableView.tableFooterView = footerView
+		tableView.register(TextCell.self, forCellReuseIdentifier: "textCell")
+		tableView.register(TopPeopleCell.self, forCellReuseIdentifier: "topPeopleCell")
+		tableView.delegate = self
+		tableView.dataSource = self
 		return tableView
 	}()
 
@@ -39,7 +60,19 @@ class AboutVC: UIViewController {
 		return view
 	}()
 
-	private let texts = ["Operating out of Bethlehem, PA, Soltech Solutions develops green and energy efficient products to enhance your daily life. Together the team continues to design and handcraft our product lines with the mission of helping you live a healthier and happier. As we continue to grow, we pledge to never compromise quality for profit.", "We plan to keep our production in Bethlehem, Pennsylvania and will continue to expand and improve our product line. We are working closely with our township, community leaders, and multiple business incubators to bring jobs to our local nonprofits and will continue to reinvest money into the community.", "If you have any issues, comments, or questions, always feel free to contact us. We are here to serve you, outr loyal customer!"]
+	private let closeBtn: UIButton = {
+		let btn = UIButton()
+		btn.setImage(UIImage(named: "x")?.withRenderingMode(.alwaysTemplate), for: .normal)
+		btn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+		return btn
+	}()
+
+	private lazy var navBar: MyCustomNavBar = {
+		let view = MyCustomNavBar(frame: CGRect.zero, isTransparent: true, title: "Our Story", leftBarBtn: closeBtn, rightBarBtn: nil)
+		return view
+	}()
+
+	private let texts = ["Operating out of Bethlehem, PA, Soltech Solutions develops green and energy efficient products to enhance your daily life. Together the team continues to design and handcraft our product lines with the mission of helping you live a healthier and happier. As we continue to grow, we pledge to never compromise quality for profit.", "We plan to keep our production in Bethlehem, Pennsylvania and will continue to expand and improve our product line. We are working closely with our township, community leaders, and multiple business incubators to bring jobs to our local nonprofits and will continue to reinvest money into the community.", "If you have any issues, comments, or questions, always feel free to contact us. We are here to serve you, our loyal customer!"]
 
 	private var topPeople: Results<RealmPerson>!
 	private var realm: Realm!
@@ -50,31 +83,27 @@ class AboutVC: UIViewController {
 		realm = try! Realm(configuration: realmConfig)
 		topPeople = realm.objects(RealmPerson.self)
 
-		navigationController?.navigationBar.barTintColor = COLOR_NAV_BARTINT
-		navigationController?.navigationBar.tintColor = COLOR_NAV_TINT
-		navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: COLOR_NAV_TINT]
-
 		view.addSubview(tableView)
-		tableView.frame = view.bounds
-		tableView.tableHeaderView = headerView
-		tableView.tableFooterView = footerView
-		tableView.register(TextCell.self, forCellReuseIdentifier: "textCell")
-		tableView.register(TopPeopleCell.self, forCellReuseIdentifier: "topPeopleCell")
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
-		tableView.delegate = self
-		tableView.dataSource = self
+		view.addSubview(navBar)
 
-		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeBtn_24"), style: .plain, target: self, action: #selector(closeVC))
-        view.backgroundColor = .white
+		constrain(navBar, tableView) { (nav, tableView) in
+			nav.top == nav.superview!.top
+			nav.right == nav.superview!.right
+			nav.left == nav.superview!.left
+			nav.height == 64
+
+			tableView.top == tableView.superview!.top
+			tableView.right == tableView.superview!.right
+			tableView.left == tableView.superview!.left
+			tableView.bottom == tableView.superview!.bottom
+		}
+
         navigationItem.title = "Our Story"
-    }
+		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "x"), style: .plain, target: self, action: #selector(closeVC))
+	}
 
 	@objc private func closeVC() {
 		dismiss(animated: true, completion: nil)
-	}
-
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
 	}
 }
 
@@ -113,82 +142,25 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
 
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		headerView.updateScrollViewOffset(scrollView)
-	}
-}
-
-class TopPeopleCell: UITableViewCell {
-	private let circleImgView: UIImageView = {
-		let img = UIImageView(frame: CGRect.zero)
-		img.contentMode = .scaleAspectFill
-		img.clipsToBounds = true
-		img.layer.cornerRadius = 40
-		return img
-	}()
-
-	private let nameLabel: UILabel = {
-		let label = UILabel()
-		label.textColor = .black
-		label.textAlignment = .center
-		return label
-	}()
-
-	private let positionLabel: UILabel = {
-		let label = UILabel()
-		label.textColor = .darkGray
-		label.textAlignment = .center
-		return label
-	}()
-
-	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-		contentView.addSubview(circleImgView)
-		contentView.addSubview(nameLabel)
-		contentView.addSubview(positionLabel)
-
-		constrain(circleImgView, nameLabel, positionLabel) { (img, name, pos) in
-			img.top == img.superview!.top + 20
-			img.width == 80
-			img.height == 80
-			img.centerX == img.superview!.centerX
-
-			name.top == img.bottom + 8
-			name.right == name.superview!.right - 8
-			name.left == name.superview!.left + 8
-			name.height == 30
-
-			pos.top == name.bottom
-			pos.right == name.right
-			pos.left == name.left
-			pos.height == 30
-			pos.bottom == pos.superview!.bottom
+		if tableView.contentOffset.y >= height - 67 {
+			navBar.isTransparent = false
+			navBar.changeBarStyling()
+		} else {
+			navBar.isTransparent = true
+			navBar.changeBarStyling()
 		}
 	}
 
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	func configureCell(imageData: Data, name: String, position: String, nameFontSize: CGFloat, positionFontSize: CGFloat) {
-		circleImgView.image = UIImage(data: imageData)
-		nameLabel.text = name.uppercased()
-		nameLabel.font = UIFont.systemFont(ofSize: nameFontSize)
-		positionLabel.text = position
-		positionLabel.font = UIFont.systemFont(ofSize: positionFontSize)
+	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+		if tableView.contentOffset.y <= -150 {
+			self.dismiss(animated: true, completion: nil)
+		}
 	}
 }
 
-class TopPerson {
-	var name: String!
-	var position: String!
-	var imageName: String!
 
-	init(name: String, position: String, imageName: String) {
-		self.name = name
-		self.position = position
-		self.imageName = imageName
-	}
-}
+
+
 
 
 

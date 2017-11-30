@@ -9,39 +9,30 @@
 import UIKit
 import Cartography
 
-class NavCell: UICollectionViewCell {
+class NavCell: UITableViewCell {
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
     
-    private let seperatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
         contentView.addSubview(label)
-        contentView.addSubview(seperatorView)
-        constrain(label, seperatorView) { (label, view) in
+		contentView.backgroundColor = .white
+
+		constrain(label) { (label) in
             label.top == label.superview!.top
             label.right == label.superview!.right
             label.left == label.superview!.left + 20
-            label.bottom == view.top
-            
-            view.bottom == view.superview!.bottom
-            view.height == 1
-            view.left == view.superview!.left + 20
-            view.right == view.superview!.right
+            label.bottom == label.superview!.bottom
+			label.height == 50
         }
     }
     
-    func configureCell(title: String) {
+	func configureCell(title: String, fontSize: CGFloat) {
         label.text = title
+		label.font = UIFont.boldSystemFont(ofSize: fontSize)
     }
     
     required init?(coder aDecoder: NSCoder) {

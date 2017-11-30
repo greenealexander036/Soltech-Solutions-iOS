@@ -8,16 +8,19 @@
 
 import UIKit
 import RealmSwift
-import Foundation
+import Cartography
+import Alamofire
 
 class DevicesVC: UIViewController {
 	private var realm: Realm!
 	private var devices: Results<RealmDevice>!
 	private var notificationToken: NotificationToken!
 
-	private let tableView: UITableView = {
-		let tableView = UITableView(frame: CGRect.zero)
+	private lazy var tableView: UITableView = {
+		let tableView = UITableView()
 		tableView.separatorStyle = .none
+		tableView.estimatedRowHeight = 285
+		tableView.rowHeight = UITableViewAutomaticDimension
 		return tableView
 	}()
 
@@ -26,15 +29,15 @@ class DevicesVC: UIViewController {
 
 		realm = try! Realm()
 		devices = realm.objects(RealmDevice.self)
-		notificationToken = devices.addNotificationBlock({ (changes) in
+		notificationToken = devices.observe({ (changes) in
 			switch changes {
 			case .initial:
-				print("initial")
+				()
 			case .update(_, let deletions, let insertions, let modifications):
 				self.tableView.beginUpdates()
 				self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-				self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: UITableViewRowAnimation.fade)
-				self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .none)
+				self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .fade)
+				self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
 				self.tableView.endUpdates()
 			case .error(let error):
 				fatalError(String(describing: error))
@@ -45,10 +48,15 @@ class DevicesVC: UIViewController {
 
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
+		tableView.register(DeviceCell.self, forCellReuseIdentifier: "deviceCell")
 		view.addSubview(tableView)
 
-		tableView.frame = view.bounds
+		constrain(tableView) { (tableView) in
+			tableView.top == tableView.superview!.top
+			tableView.right == tableView.superview!.right
+			tableView.left == tableView.superview!.left
+			tableView.bottom == tableView.superview!.bottom
+		}
 
 		view.addGestureRecognizer(revealViewController().panGestureRecognizer())
 		view.addGestureRecognizer(revealViewController().tapGestureRecognizer())
@@ -82,8 +90,8 @@ extension DevicesVC: UITableViewDelegate, UITableViewDataSource {
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cellid")!
-		cell.textLabel?.text = devices[indexPath.row].ip
+		let cell = tableView.dequeueReusableCell(withIdentifier: "deviceCell") as! DeviceCell
+		cell.configureCell(device: devices[indexPath.row])
 		return cell
 	}
 
@@ -96,12 +104,50 @@ extension DevicesVC: UITableViewDelegate, UITableViewDataSource {
 	}
 
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-		let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+		let device = self.devices[indexPath.row]
+		let title = device.isOn ? "Off" : "On"
+		let toggleOnOff = UITableViewRowAction(style: .normal, title: title) { (action, indexPath) in
+			
+			// send information somewhere for the arduino to interpret
+			// after the sending of the information, and after we know it succeeded,
+			// save the status of the device to the realm
+
+			if !device.isOn {
+				Alamofire.request("http://\(device.ip)/digital/1").responseJSON(completionHandler: { (response) in
+					print("Request: \(String(describing: response.request))")
+					print("Response: \(String(describing: response.response))")
+					print("Result: \(String(describing: response.result))")
+
+					if let json = response.result.value {
+						print("JSON: \(json)")
+					}
+
+					if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+						print("Data: \(utf8Text)")
+					}
+				})
+			} else {
+				Alamofire.request("http://\(device.ip)/digital/0").responseJSON(completionHandler: { (response) in
+					print("Request: \(String(describing: response.request))")
+					print("Response: \(String(describing: response.response))")
+					print("Result: \(String(describing: response.result))")
+
+					if let json = response.result.value {
+						print("JSON: \(json)")
+					}
+
+					if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+						print("Data: \(utf8Text)")
+					}
+				})
+			}
+
 			try! self.realm.write {
-				self.realm.delete(self.devices[indexPath.row])
+				device.isOn = !device.isOn
 			}
 		}
-		return [delete]
+		toggleOnOff.backgroundColor = device.isOn ? UIColor.red : COLOR_GREEN
+		return [toggleOnOff]
 	}
 
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

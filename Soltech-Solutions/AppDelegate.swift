@@ -7,27 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
+import TOPasscodeViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+	private var realm: Realm?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
-        let frontVC = UINavigationController(rootViewController: HomeVC())
-        let backVC = NavVC()
-        
-        let swreveal = SWRevealViewController(rearViewController: backVC, frontViewController: frontVC)
-        
+		let frontVC = UINavigationController(rootViewController: DevicesVC())
+		let rearVC = NavVC()
+		let swreveal = SWRevealViewController(rearViewController: rearVC, frontViewController: frontVC)
         window?.rootViewController = swreveal
 
-        return true
+		UIApplication.shared.statusBarStyle = .lightContent
+
+		return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -38,10 +39,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+		realm = try! Realm()
+
+		guard let realm = realm else { return }
+
+		let localAuth = realm.object(ofType: RealmLocalAuth.self, forPrimaryKey: 0)
+
+		if let localAuth = localAuth {
+			if localAuth.passcode.characters.count > 0 {
+				if localAuth.isBiometricsAuthEnabled {
+					print("touchid")
+				} else {
+					print("passcode")
+				}
+			}
+		} else {
+			print("unprotected")
+		}
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+		realm = try! Realm()
+
+		guard let realm = realm else { return }
+
+		let localAuth = realm.object(ofType: RealmLocalAuth.self, forPrimaryKey: 0)
+
+		if let localAuth = localAuth {
+			if localAuth.passcode.characters.count > 0 {
+				if localAuth.isBiometricsAuthEnabled {
+					print("touchid")
+				} else {
+					print("passcode")
+				}
+			}
+		} else {
+			print("unprotected")
+		}
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -51,7 +86,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
